@@ -3,14 +3,90 @@
 
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Hold Shift to Check Multiple Checkboxes</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 
 <body>
+  <form>
+    <div class ="list">
+      <div class="title">Brock's Grocery List</div>
+      <div class="item">
+        <input type="checkbox" name="item1">
+        <label>Jalapeno</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item2">
+          <label>Apples</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item3">
+          <label>Grapes</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item4">
+          <label>Bread</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item5">
+          <label>Chips</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item6">
+          <label>Tomatoes</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item7">
+          <label>Mushrooms</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item8">
+          <label>Beer</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item9">
+          <label>Topo Chico</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item10">
+          <label>Natto</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item11">
+          <label>Jack Fruit</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item12">
+          <label>Peanut Butter</label>
+      </div>
+      <div class="item">
+          <input type="checkbox" name="item13">
+          <label>Puffs</label>
+      </div>
+    </div>
+
+  </form>
+<script>
+  const items = document.querySelectorAll('.list input[type="checkbox"]');
+  let lastChecked;
+  function boxClicked(e) {
+    let between = false;
+    if(e.shiftKey && this.checked) {
+      items.forEach(checkbox => {
+        if (checkbox === this || checkbox === lastChecked) {
+          between = !between;
+        }
+        if(between) {
+          checkbox.checked = true;
+        }
+      });
+    }
+    lastChecked = this;
+  }
+  items.forEach(checkbox => checkbox.addEventListener('click', boxClicked));
 
 
+</script>
 </body>
-
 </html>
